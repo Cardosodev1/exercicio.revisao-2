@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cadastro de Brinquedo</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<h1 th:if="${toy.id != null}">Editar Brinquedo</h1>
+<h1 th:unless="${toy.id != null}">Novo Brinquedo</h1>
+
+<form th:action="@{/toys-view}" th:object="${toy}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+
+    <label>Nome:</label>
+    <input type="text" th:field="*{name}" required/><br/>
+
+    <label>Tipo:</label>
+    <select th:field="*{toyType}">
+        <option th:each="type : ${T(br.com.fiap.exercicio.revisao.entity.enums.ToyType).values()}"
+                th:value="${type}" th:text="${type}"></option>
+    </select><br/>
+
+    <label>Classificação:</label>
+    <select th:field="*{toyClassification}">
+        <option th:each="classif : ${T(br.com.fiap.exercicio.revisao.entity.enums.ToyClassification).values()}"
+                th:value="${classif}" th:text="${classif}"></option>
+    </select><br/>
+
+    <label>Tamanho:</label>
+    <select th:field="*{toySize}">
+        <option th:each="size : ${T(br.com.fiap.exercicio.revisao.entity.enums.ToySize).values()}"
+                th:value="${size}" th:text="${size}"></option>
+    </select><br/>
+
+    <label>Preço (R$):</label>
+    <input type="number" th:field="*{price}" step="0.01" required/><br/>
+
+    <button type="submit">💾 Salvar</button>
+</form>
+
+<p style="text-align:center; margin-top:15px;">
+    <a class="btn" th:href="@{/toys-view}">⬅ Voltar</a>
+</p>
+
+</body>
+</html>

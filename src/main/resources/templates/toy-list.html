@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Brinquedos</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<h1>Brinquedos</h1>
+
+<a class="btn" th:href="@{/toys-view/new}">➕ Novo Brinquedo</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Tipo</th>
+        <th>Classificação</th>
+        <th>Tamanho</th>
+        <th>Preço (R$)</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="toy : ${toys}">
+        <td th:text="${toy.id}"></td>
+        <td th:text="${toy.name}"></td>
+        <td th:text="${toy.toyType}"></td>
+        <td th:text="${toy.toyClassification}"></td>
+        <td th:text="${toy.toySize}"></td>
+        <td th:text="${#numbers.formatDecimal(toy.price, 1, 2)}"></td>
+        <td>
+            <a th:href="@{'/toys-view/edit/' + ${toy.id}}">✏ Editar</a> |
+            <a th:href="@{'/toys-view/delete/' + ${toy.id}}">🗑 Excluir</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
