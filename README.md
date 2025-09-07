@@ -16,6 +16,10 @@ Esta aplicação fornece uma API para gerenciar **clientes, fornecedores, brinqu
 - Maven  
 - Banco de dados Oracle
 
+## Spring Initializr:
+
+<img width="1505" height="809" alt="image" src="https://github.com/user-attachments/assets/134ff3b5-c11e-4a78-a120-cc3ffbf17322" />
+
 ## Configuração de ambiente
 
 A API está disponível publicamente em: [https://java-project-3anr.onrender.com](https://java-project-3anr.onrender.com)  
